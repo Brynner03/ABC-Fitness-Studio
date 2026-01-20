@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ABC Fitness Studio | About & Contact</title>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/about.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="brand">
+          <img
+            src="images/Client2_LogoPalette3_91B9D2.png"
+            alt="ABC Fitness Studio Logo"
+          />
+          <div class="brand-text">
+            <h1>ABC Fitness Studio</h1>
+            <p>Balance • Harmony • Active Living</p>
+          </div>
+        </div>
+
+        <nav class="site-nav">
+          <a href="index.html">Home</a>
+          <a href="classes.html">Classes</a>
+          <a href="gallery.html">Gallery</a>
+          <a class="active" href="about-contact.html">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <h2>About ABC Fitness Studio</h2>
+        <p>
+          ABC Fitness Studio was created to serve the local community with a
+          thoughtful approach to fitness and wellness. Our goal is to provide a
+          welcoming environment where individuals can build strength, improve
+          mobility, and develop routines that support both physical and mental
+          well being.
+        </p>
+
+        <p>
+          We offer Yoga, Pilates, and Kickboxing classes led by experienced
+          instructors who focus on proper movement, safety, and progress over
+          time. In addition to classes, we provide quality fitness equipment to
+          help clients stay consistent outside the studio.
+        </p>
+      </section>
+
+      <section>
+        <h2>Contact Us</h2>
+        <p>
+          Use the form below to ask questions, request class information,
+          provide feedback, or inquire about equipment purchases and custom
+          orders.
+        </p>
+
+        <form action="thank-you.html" method="get">
+          <p>
+            <label for="name">Full Name</label><br />
+            <input type="text" id="name" name="name" required />
+          </p>
+
+          <p>
+            <label for="email">Email Address</label><br />
+            <input type="email" id="email" name="email" required />
+          </p>
+
+          <p>
+            <label for="reason">Reason for Contact</label><br />
+            <select id="reason" name="reason" required>
+              <option value="">Select an option</option>
+              <option value="general">General Question</option>
+              <option value="classes">Class Information or Booking</option>
+              <option value="equipment">Equipment Purchase</option>
+              <option value="custom">Custom Order Request</option>
+              <option value="feedback">Feedback</option>
+            </select>
+          </p>
+
+          <p>
+            <label for="message">Message</label><br />
+            <textarea
+              id="message"
+              name="message"
+              rows="6"
+              cols="40"
+              required
+            ></textarea>
+          </p>
+
+          <p>
+            Preferred Contact Method<br />
+            <input
+              type="radio"
+              id="contactEmail"
+              name="contactMethod"
+              value="email"
+              checked
+            />
+            <label for="contactEmail">Email</label><br />
+
+            <input
+              type="radio"
+              id="contactPhone"
+              name="contactMethod"
+              value="phone"
+            />
+            <label for="contactPhone">Phone</label>
+          </p>
+
+          <p>
+            <label for="phone">Phone Number (optional)</label><br />
+            <input type="tel" id="phone" name="phone" />
+          </p>
+
+          <p>
+            <input type="checkbox" id="updates" name="updates" value="yes" />
+            <label for="updates">
+              I would like to receive updates and studio announcements
+            </label>
+          </p>
+
+          <p>
+            <button type="submit">Submit</button>
+            <button type="reset">Clear Form</button>
+          </p>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <hr />
+      <p>&copy; 2026 ABC Fitness Studio</p>
+    </footer>
+  </body>
+</html>
