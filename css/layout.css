@@ -26,6 +26,12 @@
 
 .brand img{width:44px}
 
+.brand-text p{
+  color: rgba(252,252,252,0.9);
+  font-weight: 500;
+}
+
+
 .site-nav{
   display:flex;
   gap:.35rem;
