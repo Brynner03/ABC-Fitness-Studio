@@ -1,0 +1,52 @@
+.schedule{
+  width:min(920px,100%);
+  margin:1rem auto 0;
+  border-collapse:separate;
+  border-spacing:0;
+  background:#fff;
+  border:1px solid rgba(145,185,210,.55);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 12px 30px rgba(0,0,0,.08);
+  margin-bottom: 4rem;
+}
+
+.schedule th,
+.schedule td{
+  padding:.95rem 1.05rem;
+  border-bottom:1px solid rgba(145,185,210,.35);
+  text-align:left;
+  vertical-align:middle;
+}
+
+.schedule tr:last-child td{border-bottom:none}
+
+.schedule th{
+  background:linear-gradient(180deg, rgba(145,185,210,.32), rgba(145,185,210,.18));
+  color:var(--brisk-blue);
+  font-weight:800;
+  letter-spacing:.2px;
+}
+
+.schedule tbody tr:nth-child(even){
+  background:rgba(145,185,210,.08);
+}
+
+.schedule tbody tr:hover{
+  background:rgba(222,244,121,.18);
+}
+
+.schedule td:first-child{
+  font-weight:800;
+  color:var(--brisk-blue);
+}
+
+.schedule td:last-child{
+  font-weight:800;
+}
+
+@media (max-width:640px){
+  .schedule{font-size:.95rem}
+  .schedule th,.schedule td{padding:.8rem .75rem}
+}
+

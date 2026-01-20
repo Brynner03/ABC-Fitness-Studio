@@ -1,0 +1,44 @@
+.hero{
+  position:relative;
+  min-height:340px;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+  margin-top:1rem;
+  background-image:url("../images/Client2_GroupKickboxing.png");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg, rgba(23,37,111,.88), rgba(35,67,189,.55));
+}
+
+.hero-content{
+  position:relative;
+  padding:2.5rem 2rem;
+  max-width:680px;
+  color:#FCFCFC;
+}
+
+.hero-content h2{
+  color:#FCFCFC;
+  font-size:2rem;
+  line-height:1.15;
+  margin:0 0 .75rem;
+}
+
+.hero-content p{
+  margin:0 0 1.25rem;
+  color:rgba(252,252,252,.92);
+  font-size:1rem;
+}
+
+.hero-actions{
+  display:flex;
+  gap:.75rem;
+  flex-wrap:wrap;
+}
