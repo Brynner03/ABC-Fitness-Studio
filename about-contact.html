@@ -71,7 +71,7 @@
           orders.
         </p>
 
-        <form action="thank-you.html" method="get" id="contact-form">
+        <form method="get" id="contact-form">
           <p>
             <label for="name">Full Name</label><br />
             <input type="text" id="name" name="name" required />
@@ -150,41 +150,63 @@
       <p>&copy; 2026 ABC Fitness Studio</p>
     </footer>
     <script>
-      const btn = document.querySelector(".nav-toggle");
-      const nav = document.querySelector(".site-nav");
+      window.addEventListener("DOMContentLoaded", () => {
+        const btn = document.querySelector(".nav-toggle");
+        const nav = document.querySelector(".site-nav");
 
-      if (btn && nav) {
-        btn.addEventListener("click", () => {
-          const isOpen = nav.classList.toggle("open");
-          btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
-          btn.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
-        });
-
-        nav.querySelectorAll("a").forEach((a) => {
-          a.addEventListener("click", () => {
-            nav.classList.remove("open");
-            btn.setAttribute("aria-expanded", "false");
-            btn.setAttribute("aria-label", "Open menu");
+        if (btn && nav) {
+          btn.addEventListener("click", () => {
+            const isOpen = nav.classList.toggle("open");
+            btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+            btn.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
           });
-        });
-      }
 
-      const subscribeBtn = document.getElementById("subscribe-btn");
-      if (subscribeBtn) {
-        subscribeBtn.addEventListener("click", () => {
-          alert("Thank you for subscribing.");
-        });
-      }
+          nav.querySelectorAll("a").forEach((a) => {
+            a.addEventListener("click", () => {
+              nav.classList.remove("open");
+              btn.setAttribute("aria-expanded", "false");
+              btn.setAttribute("aria-label", "Open menu");
+            });
+          });
+        }
 
-      const contactForm = document.getElementById("contact-form");
+        const subscribeBtn = document.getElementById("subscribe-btn");
+        if (subscribeBtn) {
+          subscribeBtn.addEventListener("click", () => {
+            alert("Thank you for subscribing.");
+          });
+        }
 
-      if (contactForm) {
-        contactForm.addEventListener("submit", (e) => {
-          e.preventDefault();
-          alert("Thank you for your message.");
-          window.location.href = "thank-you.html";
-        });
-      }
+        const form = document.getElementById("contact-form");
+        if (form) {
+          form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const data = {
+              name: document.getElementById("name")?.value?.trim() || "",
+              email: document.getElementById("email")?.value?.trim() || "",
+              reason: document.getElementById("reason")?.value || "",
+              message: document.getElementById("message")?.value?.trim() || "",
+              contactMethod:
+                form.querySelector('input[name="contactMethod"]:checked')
+                  ?.value || "",
+              phone: document.getElementById("phone")?.value?.trim() || "",
+              updates: document.getElementById("updates")?.checked
+                ? "yes"
+                : "no",
+              submittedAt: new Date().toISOString(),
+            };
+
+            localStorage.setItem(
+              "abc_contact_submission",
+              JSON.stringify(data),
+            );
+
+            alert("Thank you for your message.");
+            window.location.href = "thank-you.html";
+          });
+        }
+      });
     </script>
   </body>
 </html>
