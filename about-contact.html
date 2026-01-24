@@ -146,7 +146,7 @@
     </main>
 
     <footer>
-      <hr />
+      <button id="subscribe-btn">Subscribe</button>
       <p>&copy; 2026 ABC Fitness Studio</p>
     </footer>
     <script>
@@ -166,6 +166,13 @@
             btn.setAttribute("aria-expanded", "false");
             btn.setAttribute("aria-label", "Open menu");
           });
+        });
+      }
+
+      const subscribeBtn = document.getElementById("subscribe-btn");
+      if (subscribeBtn) {
+        subscribeBtn.addEventListener("click", () => {
+          alert("Thank you for subscribing.");
         });
       }
     </script>
