@@ -61,11 +61,15 @@
                 width="220"
               /><br /><br />
               <p><strong>Yoga Mat</strong></p>
-              <button type="button" class="add-to-cart">Add to Cart</button>
-              <button type="button" class="clear-cart">Clear Cart</button>
-              <button type="button" class="process-order">Process Order</button>
+              <button
+                type="button"
+                class="add-to-cart"
+                data-name="Yoga Mat"
+                data-price="22.99"
+              >
+                Add to Cart
+              </button>
             </td>
-
             <td align="center">
               <img
                 src="images/Client2_WaterBottle.png"
@@ -73,11 +77,15 @@
                 width="220"
               /><br /><br />
               <p><strong>Water Bottle</strong></p>
-              <button type="button" class="add-to-cart">Add to Cart</button>
-              <button type="button" class="clear-cart">Clear Cart</button>
-              <button type="button" class="process-order">Process Order</button>
+              <button
+                type="button"
+                class="add-to-cart"
+                data-name="Water Bottle"
+                data-price="14.99"
+              >
+                Add to Cart
+              </button>
             </td>
-
             <td align="center">
               <img
                 src="images/Client2_TeeShirt.png"
@@ -85,12 +93,16 @@
                 width="220"
               /><br /><br />
               <p><strong>Fitness Tee</strong></p>
-              <button type="button" class="add-to-cart">Add to Cart</button>
-              <button type="button" class="clear-cart">Clear Cart</button>
-              <button type="button" class="process-order">Process Order</button>
+              <button
+                type="button"
+                class="add-to-cart"
+                data-name="Fitness Tee"
+                data-price="29.99"
+              >
+                Add to Cart
+              </button>
             </td>
           </tr>
-
           <tr>
             <td align="center">
               <img
@@ -99,11 +111,15 @@
                 width="220"
               /><br /><br />
               <p><strong>Group Yoga</strong></p>
-              <button type="button" class="add-to-cart">Add to Cart</button>
-              <button type="button" class="clear-cart">Clear Cart</button>
-              <button type="button" class="process-order">Process Order</button>
+              <button
+                type="button"
+                class="add-to-cart"
+                data-name="Group Yoga"
+                data-price="49.99"
+              >
+                Add to Cart
+              </button>
             </td>
-
             <td align="center">
               <img
                 src="images/Client2_GroupPilates.png"
@@ -111,11 +127,15 @@
                 width="220"
               /><br /><br />
               <p><strong>Group Pilates</strong></p>
-              <button type="button" class="add-to-cart">Add to Cart</button>
-              <button type="button" class="clear-cart">Clear Cart</button>
-              <button type="button" class="process-order">Process Order</button>
+              <button
+                type="button"
+                class="add-to-cart"
+                data-name="Group Pilates"
+                data-price="54.99"
+              >
+                Add to Cart
+              </button>
             </td>
-
             <td align="center">
               <img
                 src="images/Client2_GroupKickboxing.png"
@@ -123,12 +143,16 @@
                 width="220"
               /><br /><br />
               <p><strong>Group Kickboxing</strong></p>
-              <button type="button" class="add-to-cart">Add to Cart</button>
-              <button type="button" class="clear-cart">Clear Cart</button>
-              <button type="button" class="process-order">Process Order</button>
+              <button
+                type="button"
+                class="add-to-cart"
+                data-name="Group Kickboxing"
+                data-price="59.99"
+              >
+                Add to Cart
+              </button>
             </td>
           </tr>
-
           <tr>
             <td align="center">
               <img
@@ -137,11 +161,15 @@
                 width="220"
               /><br /><br />
               <p><strong>Individual Yoga</strong></p>
-              <button type="button" class="add-to-cart">Add to Cart</button>
-              <button type="button" class="clear-cart">Clear Cart</button>
-              <button type="button" class="process-order">Process Order</button>
+              <button
+                type="button"
+                class="add-to-cart"
+                data-name="Individual Yoga"
+                data-price="74.99"
+              >
+                Add to Cart
+              </button>
             </td>
-
             <td align="center">
               <img
                 src="images/Client2_IndividualPilates.png"
@@ -149,9 +177,14 @@
                 width="220"
               /><br /><br />
               <p><strong>Individual Pilates</strong></p>
-              <button type="button" class="add-to-cart">Add to Cart</button>
-              <button type="button" class="clear-cart">Clear Cart</button>
-              <button type="button" class="process-order">Process Order</button>
+              <button
+                type="button"
+                class="add-to-cart"
+                data-name="Individual Name"
+                data-price="74.99"
+              >
+                Add to Cart
+              </button>
             </td>
 
             <td align="center">
@@ -161,12 +194,24 @@
                 width="220"
               /><br /><br />
               <p><strong>Individual Kickboxing</strong></p>
-              <button type="button" class="add-to-cart">Add to Cart</button>
-              <button type="button" class="clear-cart">Clear Cart</button>
-              <button type="button" class="process-order">Process Order</button>
+              <button
+                type="button"
+                class="add-to-cart"
+                data-name="Individual Kickboxing"
+                data-price="79.99"
+              >
+                Add to Cart
+              </button>
             </td>
           </tr>
         </table>
+        <section class="cart-controls">
+          <button type="button" class="view-cart">View Cart</button>
+          <button type="button" class="clear-cart">Clear Cart</button>
+          <button type="button" class="process-order">Process Order</button>
+
+          <div id="cart-output"></div>
+        </section>
       </section>
     </main>
 
@@ -194,27 +239,88 @@
         });
       }
 
+      // Setup cart
+
+      const CART_KEY = "my_cart";
+
+      const getCart = () => {
+        try {
+          return JSON.parse(sessionStorage.getItem(CART_KEY)) || [];
+        } catch {
+          return [];
+        }
+      };
+
+      const setCart = (cart) =>
+        sessionStorage.setItem(CART_KEY, JSON.stringify(cart));
+
+      const renderCart = () => {
+        const out = document.getElementById("cart-output");
+        if (!out) return;
+
+        const cart = getCart();
+        if (cart.length === 0) {
+          out.innerHTML = "<p>Your cart is empty.</p>";
+          return;
+        }
+
+        const total = cart.reduce((sum, i) => sum + Number(i.price || 0), 0);
+
+        out.innerHTML = `
+          <div class="card">
+            <h3>Cart</h3>
+            <ul>
+              ${cart.map((i) => `<li><strong>${i.name}</strong> — $${Number(i.price).toFixed(2)}</li>`).join("")}
+            </ul>
+            <p><strong>Total:</strong> $${total.toFixed(2)}</p>
+          </div>
+        `;
+      };
+
+      // Cart Functionality Script
+
       const addToCart = document.getElementsByClassName("add-to-cart");
       const clearCart = document.getElementsByClassName("clear-cart");
       const processOrder = document.getElementsByClassName("process-order");
+      const viewCart = document.getElementsByClassName("view-cart");
 
       document.querySelectorAll(".add-to-cart").forEach((btn) => {
         btn.addEventListener("click", () => {
+          const item = {
+            name: btn.dataset.name || "Item",
+            price: btn.dataset.price || "0.00",
+          };
+
+          const cart = getCart();
+          cart.push(item);
+          setCart(cart);
+          renderCart();
           alert("Item added to the cart.");
         });
       });
 
       document.querySelectorAll(".clear-cart").forEach((btn) => {
         btn.addEventListener("click", () => {
+          setCart([]);
+          renderCart();
           alert("Cart cleared.");
         });
       });
 
       document.querySelectorAll(".process-order").forEach((btn) => {
         btn.addEventListener("click", () => {
+          const cart = getCart();
+          if (cart.length === 0) return alert("Your cart is empty.");
+          setCart([]);
+          renderCart();
           alert("Thank you for your order.");
         });
       });
+
+      document.querySelectorAll(".view-cart").forEach((btn) => {
+        btn.addEventListener("click", renderCart);
+      });
+
       const subscribeBtn = document.getElementById("subscribe-btn");
       if (subscribeBtn) {
         subscribeBtn.addEventListener("click", () => {
